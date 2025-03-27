@@ -2,7 +2,7 @@
 pragma solidity 0.8.28;
 
 
-contract ForLoop {
+contract ForLoopGasCost {
     event Log(uint256);
 
     function loop_ipp() public {
