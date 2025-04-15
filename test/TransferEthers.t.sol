@@ -2,7 +2,7 @@
 pragma solidity 0.8.28;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Sender, Receiver} from "../src/TransferEthers.sol";
+import {Sender} from "../src/TransferEthers.sol";
 
 contract SenderTest is Test  {
     Sender sender;
