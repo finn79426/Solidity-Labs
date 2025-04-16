@@ -24,16 +24,17 @@ contract Sender {
     }
 
     function yulWithoutReturnData(address to) public {
-        bool suc;
         assembly {
-            suc := call(
-                gas(),
-                to,
-                selfbalance(),
-                0,
-                0,
-                0,   
-                0    
+            pop(
+                call(
+                    gas(),
+                    to,
+                    selfbalance(),
+                    0,
+                    0,
+                    0,   
+                    0    
+                )
             )
         }
     }
