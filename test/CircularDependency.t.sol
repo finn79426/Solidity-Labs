@@ -59,6 +59,9 @@ contract CircularDependencyTest is Test {
         assertEq(address(token), expectedTokenAddress, "Token address should be match");
     }
 
+    // `CREATE2` does not work for circular dependencies because the contract address is determined by the salt and the init bytecode of the contract.
+    // The init bytecode including constructor arguments, which are not known until the contract is deployed.
+
     // This is how `CREATE3` works:
     //
     // [Create3Factory Contract] (In this case, it's address(this))
@@ -71,7 +74,7 @@ contract CircularDependencyTest is Test {
     //     v
     // [YourContract @ predictable address]
 
-    function testCreate3() public {
+    function testCreateCircularDependentContractsViaCreate3() public {
         // ------------------------------------------------------------------
         //                Setting salt (for CREATE2->Proxy)
         // ------------------------------------------------------------------
