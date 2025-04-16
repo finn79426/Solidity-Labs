@@ -13,8 +13,8 @@ This experimental script shows how different loop implementations affect gas con
 Conclusion: 4 < 2 < 3 < 1
 ```
 
-- [CircularDependency.sol](src/ForLoopGasCost.sol)
-- [CircularDependency.t.sol](test/ForLoopGasCost.t.sol)
+- [ForLoopGasCost.sol](src/ForLoopGasCost.sol)
+- [ForLoopGasCost.t.sol](test/ForLoopGasCost.t.sol)
 
 
 # Transfer Ethers
