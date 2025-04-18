@@ -54,6 +54,20 @@ In this case, proxy_init_code is pre-defined fixed bytecode (no dynamic construc
 Since proxy_address is predictable, the contract address CREATED by proxy is also predictable.
 ```
 
-
 - [CircularDependency.sol](src/CircularDependency.sol)
 - [CircularDependency.t.sol](test/CircularDependency.t.sol)
+
+# Storage Slot Layout
+
+Just a lab for learning smart contract storage layout.
+
+- [StorageSlotLayout.sol](src/StorageSlotLayout.sol)
+- [StorageSlotLayout.t.sol](test/StorageSlotLayout.t.sol)
+
+# Delegatecall Library's External Function
+
+Used to prove that a delegate call is used when calling the library's external function.
+
+
+- [DelegatecallLibraryExternalFunction.sol](src/DelegatecallLibraryExternalFunction.sol)
+- [DelegatecallLibraryExternalFunction.t.sol](test/DelegatecallLibraryExternalFunction.t.sol)
