@@ -63,10 +63,9 @@ contract SlotQuizTest is Test {
         bytes32 slot7 = vm.load(address(slotQuiz), bytes32(uint256(7)));
         assertEq(slot7, bytes32(0x0000000000000000000000000000000000000000000000000000000000000000));
 
-
         // Set the key-value of the mapping
-        slotQuiz.setMappingValue("dog", "woof");
-        slotQuiz.setMappingValue("superlong", "suuuuuuuppppppppeerlogggggggggggggggg"); // value size > 31 bytes
+        slotQuiz.setMappingValue("dog", "woof"); // value size <= 32 bytes
+        slotQuiz.setMappingValue("superlong", "suuuuuuuppppppppeerlogggggggggggggggg"); // value size >= 32 bytes
 
         // Slot 7 should still be empty
         slot7 = vm.load(address(slotQuiz), bytes32(uint256(7)));
@@ -78,7 +77,6 @@ contract SlotQuizTest is Test {
 
         bytes32 slotValue2 = vm.load(address(slotQuiz), keccak256(abi.encodePacked("superlong", uint256(7))));
         assertEq(slotValue2, bytes32(0x000000000000000000000000000000000000000000000000000000000000004b)); // this represents the size of the data length == 75 bytes >> 1 == 37 == len("suuuuuuuppppppppeerlogggggggggggggggg")
-
 
         bytes32 slotKey = keccak256(abi.encodePacked("superlong", uint256(7)));
         bytes32 slotDataStart = keccak256(abi.encodePacked(slotKey));
