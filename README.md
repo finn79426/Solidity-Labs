@@ -66,7 +66,7 @@ Just a lab for learning smart contract storage layout.
 
 # Delegatecall Library's External Function
 
-Used to prove that a delegate call is used when calling the library's external function.
+Used to prove that a delegate call is used when calling the library's external function, inspired by [Secureum RACE#34 Question 3](https://ventral.digital/posts/2024/11/10/race-34-of-the-secureum-bootcamp-epoch-infinity/#question-3-of-8).
 
 
 - [DelegatecallLibraryExternalFunction.sol](src/DelegatecallLibraryExternalFunction.sol)
