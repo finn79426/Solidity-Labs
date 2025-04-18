@@ -39,5 +39,21 @@ Conclusion: 2 < 1 < 6 < 4 < 5 < 3
 
 This experimental script shows how circularly dependent contracts can be deployed via `CREATE` and `CREATE3`, inspired by [Secureum RACE#35 Question 4](https://ventral.digital/posts/2024/12/10/race-35-of-the-secureum-bootcamp-epoch-infinity/#question-4-of-8).
 
+```
+Deploy Circular Dependent Contracts:
+
+✅ CREATE: New Contract Address = keccak256(rlp.encode([deployer_address, nonce]))[-20:]
+Deployer's nonce is predictable, therefore, the New Contract Address is also predictable.
+
+❎ CREATE2: New Contract Address = keccak256(0xff ++ deployer_address ++ salt ++ keccak256(init_code))[-20:]
+The init_code including the constructor and its arguments, therefore, in this case, the new contract address is unpredictable.
+
+✅ CREATE3: New Contract Address = keccak256(rlp.encode([proxy_address, nonce]))[-20:]
+proxy_address = keccak256(0xff ++ deployer_address ++ salt ++ keccak256(proxy_init_code))[-20:]
+In this case, proxy_init_code is pre-defined fixed bytecode (no dynamic constructor involved). Therefore, the proxy_address is predictable.
+Since proxy_address is predictable, the contract address CREATED by proxy is also predictable.
+```
+
+
 - [CircularDependency.sol](src/CircularDependency.sol)
 - [CircularDependency.t.sol](test/CircularDependency.t.sol)

@@ -18,7 +18,7 @@ contract CircularDependencyTest is Test {
 
 
     function testCreateNewContractAddressShouldBePredictable() public {
-        // expectedNewContractAddress = keccak256(rlp([sender, nonce]))[12:]
+        // expectedNewContractAddress = keccak256(rlp([sender, nonce]))[-20:]
         address expected_addr = (address(uint160(uint256(keccak256(abi.encodePacked(
             bytes1(0xd6), // RLP encoding: list prefix
             bytes1(0x94), // RLP encoding: address length (20 bytes)
